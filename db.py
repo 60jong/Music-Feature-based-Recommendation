@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 db_host = 'poststatview-database.cexll1c2pdsq.ap-northeast-2.rds.amazonaws.com'
 scheme = 'mfr'
 
-SQLALCHEMY_DATABASE_URL = "mysql://%s:%s@%s:%s/%s" % (
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://%s:%s@%s:%s/%s" % (
     username,
     password,
     db_host,

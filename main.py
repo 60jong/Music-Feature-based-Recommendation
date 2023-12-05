@@ -60,7 +60,7 @@ def cos_sim(a, b):
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
 
-@app.post("/musics/register", response_model=schemas.MusicBase)
+@app.post("/musics/register", response_model=schemas.Music)
 async def create_upload_file(
         file: UploadFile = File(...),
         db: Session = Depends(get_db)
@@ -84,3 +84,9 @@ async def create_upload_file(
     genre_vector = arr.tolist()
 
     return crud.create_music(db, schemas.MusicCreate(title, genre_vector))
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)
