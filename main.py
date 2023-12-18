@@ -70,9 +70,7 @@ async def create_upload_file(
     new_file_path = os.path.join(os.getcwd(), "static", "musics", title)
 
     if os.path.exists(new_file_path):
-        return {
-            "message": "already registered"
-        }
+        os.remove(new_file_path)
 
     # new file
     with open(new_file_path, "wb") as f:
@@ -88,5 +86,7 @@ async def create_upload_file(
 
 if __name__ == "__main__":
     import uvicorn
+    print('started')
+    uvicorn.run(app, host="0.0.0.0", port = 8000)
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+
